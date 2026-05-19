@@ -893,6 +893,12 @@ public abstract class EntityLiving extends Entity {
 			int var3 = this.getHealth();
 			this.health -= par2;
 			this.field_94063_bt.func_94547_a(par1DamageSource, var3, par2);
+
+			Entity attacker = par1DamageSource.getEntity();
+			if (attacker instanceof EntityPlayer) {
+				EntityPlayer player = (EntityPlayer) attacker;
+				player.addChatMessage("You struck a " + this.getEntityName() + " for " + par2 + " damage!");
+			}
 		}
 	}
 
