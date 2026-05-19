@@ -961,6 +961,12 @@ public abstract class EntityLiving extends Entity {
 		this.dead = true;
 
 		this.worldObj.setEntityState(this, (byte) 3);
+
+		Entity attacker = damageSource.getEntity();
+		if (attacker instanceof EntityPlayer) {
+        	EntityPlayer player = (EntityPlayer) attacker;
+        	player.addChatMessage("You killed a " + this.getEntityName() + "!");
+		}
 	}
 
 	protected void dropRareDrop(int par1) {
