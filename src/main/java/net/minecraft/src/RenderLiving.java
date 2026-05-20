@@ -214,6 +214,12 @@ public abstract class RenderLiving extends Render {
 		EaglerAdapter.glEnable(EaglerAdapter.GL_CULL_FACE);
 		EaglerAdapter.glPopMatrix();
 		this.passSpecialRender(par1EntityLiving, par2, par4, par6);
+
+		if (!(par1EntityLiving instanceof EntityOtherPlayerMP)) {
+			String par2Str = "§f" + par1EntityLiving.getEntityName() + " §8| §c" + par1EntityLiving.getHealth() + "§8/§c" + par1EntityLiving.getMaxHealth();
+
+    		this.renderLivingLabel(par1EntityLiving, par2Str, par2, par4, par6, 64);
+		}
 	}
 
 	/**
