@@ -562,6 +562,19 @@ public class NetServerHandler extends NetHandler {
 		} else {
 			String var2 = par1Packet3Chat.message;
 
+			if (var2.startsWith("!npc:")) {
+				var2 = var2.replace("!", "");
+				var2 = var2.replace("&", "§");
+
+				ItemStack npcPlacer = new ItemStack(Item.NPCPlacer, 1);
+				npcPlacer.setItemName(var2);
+
+				this.playerEntity.inventory.addItemStackToInventory(npcPlacer);
+				this.playerEntity.sendContainerToPlayer(this.playerEntity.inventoryContainer);
+
+				return;
+			}
+
 			if (var2.length() > 100) {
 				this.kickPlayer("Chat message too long");
 			} else {

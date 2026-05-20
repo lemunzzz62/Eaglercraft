@@ -13,6 +13,9 @@ import net.minecraft.client.Minecraft;
 
 
 public abstract class EntityLiving extends Entity {
+	public String customLabel = null;
+	public boolean isNPC = false;
+
 	/**
 	 * An array of probabilities that determines whether a random enchantment should
 	 * be added to the held item. Indexed by difficulty.
@@ -224,6 +227,8 @@ public abstract class EntityLiving extends Entity {
 	/** How long to keep a specific target entity */
 	protected int numTicksToChaseTarget = 0;
 
+	public int clientHealth = -1;
+
 	public EntityLiving() {
 		super();
 		this.preventEntitySpawning = true;
@@ -424,6 +429,8 @@ public abstract class EntityLiving extends Entity {
 		this.dataWatcher.addObject(10, Byte.valueOf((byte) 0));
 		this.dataWatcher.addObject(6, Byte.valueOf((byte) 0));
 		this.dataWatcher.addObject(5, "");
+
+		this.dataWatcher.addObject(20, "");
 	}
 
 	/**
@@ -661,6 +668,8 @@ public abstract class EntityLiving extends Entity {
 	 */
 	public void onUpdate() {
 		super.onUpdate();
+
+		this.customLabel = this.dataWatcher.getWatchableObjectString(20);
 
 		this.onLivingUpdate();
 		double var12 = this.posX - this.prevPosX;
@@ -1321,6 +1330,11 @@ public abstract class EntityLiving extends Entity {
 		}
 
 		if (Math.abs(this.motionZ) < 0.005D) {
+			this.motionZ = 0.0D;
+		}
+
+		if (this.isNPC) {
+			this.motionX = 0.0D;
 			this.motionZ = 0.0D;
 		}
 

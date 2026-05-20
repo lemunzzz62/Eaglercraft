@@ -258,6 +258,8 @@ public class Item {
 	public static Item record11 = (new ItemRecord(2010, "11")).setUnlocalizedName("record");
 	public static Item recordWait = (new ItemRecord(2011, "wait")).setUnlocalizedName("record");
 
+	public static Item NPCPlacer = (new ItemNPCPlacer(1000).setUnlocalizedName("netherStar"));
+
 	/** The ID of this item. */
 	public final int itemID;
 

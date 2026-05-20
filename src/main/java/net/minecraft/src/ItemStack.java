@@ -504,6 +504,7 @@ public final class ItemStack {
 		}
 
 		var3.add(var5);
+
 		var4.addInformation(this, par1EntityPlayer, var3, par2);
 
 		if (this.hasTagCompound()) {
@@ -515,7 +516,7 @@ public final class ItemStack {
 					short var9 = ((NBTTagCompound) var10.tagAt(var7)).getShort("lvl");
 
 					if (Enchantment.enchantmentsList[var8] != null) {
-						var3.add(Enchantment.enchantmentsList[var8].getTranslatedName(var9));
+						var3.add("§9" + Enchantment.enchantmentsList[var8].getTranslatedName(var9));
 					}
 				}
 			}
@@ -546,6 +547,11 @@ public final class ItemStack {
 		if (par2 && this.isItemDamaged()) {
 			var3.add("Durability: " + (this.getMaxDamage() - this.getItemDamageForDisplay()) + " / " + this.getMaxDamage());
 		}
+
+		EnumRarity rarity = var4.getRarity(this);
+		String color = "§" + Integer.toHexString(rarity.rarityColor);
+		var3.add("");
+		var3.add(color + "§l" + rarity.rarityName.toUpperCase());
 
 		return var3;
 	}

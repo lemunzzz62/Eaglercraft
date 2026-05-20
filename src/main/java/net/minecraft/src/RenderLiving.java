@@ -216,9 +216,11 @@ public abstract class RenderLiving extends Render {
 		this.passSpecialRender(par1EntityLiving, par2, par4, par6);
 
 		if (!(par1EntityLiving instanceof EntityOtherPlayerMP)) {
-			String par2Str = "§f" + par1EntityLiving.getEntityName() + " §8| §c" + par1EntityLiving.getHealth() + "§8/§c" + par1EntityLiving.getMaxHealth();
-
-    		this.renderLivingLabel(par1EntityLiving, par2Str, par2, par4, par6, 64);
+			if (par1EntityLiving.customLabel != null) {
+				String par2Str = par1EntityLiving.customLabel;
+				
+    			this.renderLivingLabel(par1EntityLiving, par2Str, par2, par4, par6, 64);
+			}
 		}
 	}
 
