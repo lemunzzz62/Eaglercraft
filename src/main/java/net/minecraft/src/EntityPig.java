@@ -167,4 +167,21 @@ public class EntityPig extends EntityAnimal {
 	public EntityAgeable createChild(EntityAgeable par1EntityAgeable) {
 		return this.spawnBabyAnimal(par1EntityAgeable);
 	}
+
+
+	/**
+	 * ------------------------------------------------------------------
+	 * All custom code will be put PAST THIS LINE
+	 * ------------------------------------------------------------------
+	 */
+
+	public boolean attackEntityFrom(DamageSource par1DamageSource, int par2) {
+    	Entity attacker = par1DamageSource.getEntity();
+    	if (attacker instanceof EntityPlayer) {
+        	EntityPlayer player = (EntityPlayer) attacker;
+        	player.addChatMessage("You hit a pig!");
+        	player.inventory.addItemStackToInventory(new ItemStack(Item.diamond, 1));
+    	}
+    	return super.attackEntityFrom(par1DamageSource, par2);
+	}
 }

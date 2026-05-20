@@ -1451,6 +1451,7 @@ public class Minecraft implements Runnable {
 				++messageOnLoginCounter;
 				
 				if(messageOnLoginCounter == 100 && isSingleplayerOrLAN()) {
+					displayEaglercraftText(EnumChatFormatting.DARK_GREEN + "PROOF SOME SHIT ACTUALLY LOADED");
 					displayEaglercraftText(EnumChatFormatting.GREEN + "Notice: chunk loading may take a while in singleplayer.");
 				}
 				
